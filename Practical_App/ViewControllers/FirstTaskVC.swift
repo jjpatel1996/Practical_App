@@ -28,6 +28,7 @@ class FirstTaskVC: UIViewController, UITextFieldDelegate {
         inputTextfield.addTarget(self, action: #selector(textdidChange(textfield:)), for: UIControl.Event.editingChanged)
         inputTextfield.delegate = self
         inputTextfield2.delegate = self
+        searchElementTextfield.delegate = self
     }
     
     @objc func textdidChange(textfield:UITextField){
@@ -67,6 +68,8 @@ class FirstTaskVC: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         if textField == inputTextfield2 {
             searchElementTextfield.becomeFirstResponder()
+        }else if textField == searchElementTextfield {
+            PerformCheck(textField)
         }
         return true
     }
